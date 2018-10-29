@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--配置mybatis的运行环境，数据源，事务等 与Spring整合后就不用了-->
+<!--基础版本-->
+<configuration>
+<!--别名定义-->
+            <!--针对单个别名定义  type:类型的路径 alias:映射的别名-->
+<!--加载属性文件-->
+<properties resource="hr.properties"></properties>
+	<!-- 配置mybatis的环境信息，与spring整合，该信息由spring来管理 -->
+	<environments default="development">
+		<environment id="development">
+			<!-- 配置JDBC事务控制，由mybatis进行管理 -->
+			<transactionManager type="JDBC"></transactionManager>
+			<!-- 配置数据源，采用mybatis连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 加载映射文件 -->
+	<mappers>
+	
+	<package name = "com.cn.mybatis.mapper" ></package>
+	</mappers>
+</configuration>
+
+	
